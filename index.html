@@ -1,0 +1,1279 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>فروشگاه اینترنت</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+margin:0;
+font-family:Tahoma,Arial,sans-serif;
+background:linear-gradient(135deg,#070b18,#111936);
+color:#fff;
+min-height:100vh
+}
+
+.container{
+width:92%;
+max-width:1000px;
+margin:auto
+}
+
+header{
+padding:25px 0;
+display:flex;
+justify-content:space-between;
+align-items:center
+}
+
+.logo{
+font-size:23px;
+font-weight:bold
+}
+
+.nav button{
+border:0;
+background:#171e36;
+color:#fff;
+padding:10px 15px;
+border-radius:12px;
+cursor:pointer
+}
+
+.hero{
+text-align:center;
+padding:45px 10px
+}
+
+.hero h1{
+font-size:34px;
+margin:0 0 12px
+}
+
+.hero p{
+color:#aab1c5;
+font-size:16px
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+gap:20px
+}
+
+.card{
+background:rgba(255,255,255,.06);
+border:1px solid rgba(255,255,255,.1);
+border-radius:24px;
+padding:25px;
+box-shadow:0 15px 40px rgba(0,0,0,.2)
+}
+
+.operator{
+text-align:center;
+cursor:pointer;
+transition:.2s
+}
+
+.operator:hover{
+transform:translateY(-5px)
+}
+
+.icon{
+font-size:50px;
+margin-bottom:15px
+}
+
+.card h2{
+margin:8px 0
+}
+
+.muted{
+color:#9ca4ba
+}
+
+button{
+border:0;
+cursor:pointer;
+border-radius:12px;
+padding:14px 18px;
+font-size:15px
+}
+
+.primary{
+background:#5865f2;
+color:white;
+width:100%
+}
+
+.secondary{
+background:#1b233d;
+color:white
+}
+
+.section{
+margin:30px 0
+}
+
+.hidden{
+display:none
+}
+
+.packages{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:18px
+}
+
+.package{
+text-align:center
+}
+
+.volume{
+font-size:25px;
+font-weight:bold
+}
+
+.price{
+font-size:18px;
+color:#b9c1ff;
+margin:12px 0 18px
+}
+
+.payment-price{
+font-size:24px;
+font-weight:bold;
+color:#65dc91;
+text-align:center;
+background:rgba(80,210,130,.08);
+padding:16px;
+border-radius:15px;
+margin:15px 0
+}
+
+.payment-note{
+font-size:13px;
+color:#aab1c5;
+text-align:center;
+line-height:1.8
+}
+
+input{
+width:100%;
+padding:15px;
+border-radius:12px;
+border:1px solid #343d60;
+background:#0b1022;
+color:white;
+outline:none;
+font-size:16px;
+margin:8px 0
+}
+
+.info-row{
+display:flex;
+justify-content:space-between;
+gap:15px;
+padding:12px 0;
+border-bottom:1px solid rgba(255,255,255,.07)
+}
+
+.info-row:last-child{
+border:0
+}
+
+.label{
+color:#9da5ba
+}
+
+.card-number{
+background:#0b1022;
+padding:18px;
+border-radius:15px;
+font-size:20px;
+letter-spacing:2px;
+direction:ltr;
+text-align:center;
+margin:15px 0
+}
+
+.status{
+padding:12px;
+border-radius:12px;
+background:rgba(255,184,77,.12);
+color:#ffbd55;
+text-align:center;
+margin:15px 0
+}
+
+.success{
+background:rgba(80,210,130,.12);
+color:#65dc91
+}
+
+.error{
+color:#ff7070;
+text-align:center;
+margin:12px 0
+}
+
+footer{
+text-align:center;
+padding:40px 0;
+color:#777f95
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<header>
+<div class="logo">📶 فروشگاه اینترنت</div>
+
+<div class="nav">
+<button onclick="showHome()">خانه</button>
+</div>
+</header>
+
+
+<!-- صفحه اصلی -->
+<section id="home">
+
+<div class="hero">
+<h1>خرید سریع و آسان بسته اینترنت</h1>
+<p>اپراتور خود را انتخاب کنید و بسته موردنظرتان را سفارش دهید.</p>
+</div>
+
+<div class="cards">
+
+<div class="card operator" onclick="showOperator('irancell')">
+<div class="icon">🟡</div>
+<h2>ایرانسل</h2>
+<p class="muted">مشاهده بسته‌های اینترنت ایرانسل</p>
+</div>
+
+<div class="card operator" onclick="showOperator('mci')">
+<div class="icon">🟢</div>
+<h2>همراه اول</h2>
+<p class="muted">مشاهده بسته‌های اینترنت همراه اول</p>
+</div>
+
+</div>
+
+
+<div class="section card">
+
+<h2>🔎 پیگیری سفارش</h2>
+
+<p class="muted">
+کد سفارش خود را وارد کنید.
+</p>
+
+<input
+id="homeTrackCode"
+placeholder="کد سفارش"
+>
+
+<button class="primary" onclick="trackFromHome()">
+پیگیری سفارش
+</button>
+
+<div id="homeTrackError"></div>
+
+</div>
+
+</section>
+
+
+
+<!-- بسته‌ها -->
+<section id="packagesPage" class="hidden">
+
+<div class="hero">
+
+<h1 id="operatorTitle"></h1>
+
+<p>
+بسته موردنظر خود را انتخاب کنید.
+</p>
+
+</div>
+
+<div id="packageList" class="packages"></div>
+
+
+<div class="card section">
+
+<h2>📦 بسته دلخواه</h2>
+
+<p class="muted">
+حجم اینترنت موردنظر را وارد کنید.
+</p>
+
+<input
+id="customVolume"
+type="number"
+min="1"
+placeholder="مثلاً 15 گیگابایت"
+oninput="calculateCustom()"
+>
+
+<div class="price">
+قیمت پایه:
+<span id="customPrice">۰</span>
+تومان
+</div>
+
+<button class="primary" onclick="customOrder()">
+سفارش حجم دلخواه
+</button>
+
+</div>
+
+<button class="secondary" onclick="showHome()">
+← بازگشت
+</button>
+
+</section>
+
+
+
+<!-- سفارش -->
+<section id="orderPage" class="hidden">
+
+<div class="hero">
+
+<h1>🛒 ثبت سفارش</h1>
+
+<p>
+اطلاعات سفارش خود را بررسی کنید.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="info-row">
+<span class="label">اپراتور</span>
+<strong id="orderOperator"></strong>
+</div>
+
+<div class="info-row">
+<span class="label">حجم بسته</span>
+<strong id="orderVolume"></strong>
+</div>
+
+<div class="info-row">
+<span class="label">قیمت پایه</span>
+<strong id="orderPrice"></strong>
+</div>
+
+
+<h3>💳 مبلغ دقیق پرداخت</h3>
+
+<div class="payment-price" id="paymentAmount">
+</div>
+
+<p class="payment-note">
+لطفاً دقیقاً همین مبلغ را واریز کنید.
+<br>
+مبلغ پرداختی برای هر سفارش به‌صورت یکتا محاسبه می‌شود.
+</p>
+
+
+<h3>💳 شماره کارت پرداخت</h3>
+
+<div class="card-number" id="cardNumber">
+5022291522871217
+</div>
+
+<button class="primary" onclick="copyCard()">
+📋 کپی شماره کارت
+</button>
+
+<p id="copyMessage" class="muted" style="text-align:center"></p>
+
+
+<button
+class="primary"
+style="margin-top:15px"
+onclick="showPhoneForm()"
+>
+پرداخت کردم
+</button>
+
+
+<div id="phoneForm" class="hidden">
+
+<h3>📱 شماره موبایل</h3>
+
+<input
+id="phone"
+type="tel"
+maxlength="11"
+placeholder="09xxxxxxxxx"
+>
+
+<div id="phoneError"></div>
+
+<button class="primary" onclick="submitOrder()">
+ثبت سفارش
+</button>
+
+</div>
+
+</div>
+
+
+<button
+class="secondary"
+onclick="showHome()"
+style="margin-top:15px"
+>
+← بازگشت
+</button>
+
+</section>
+
+
+
+<!-- نتیجه -->
+<section id="resultPage" class="hidden">
+
+<div class="hero">
+
+<h1>✓ سفارش با موفقیت ثبت شد</h1>
+
+<p>
+سفارش شما در سیستم ثبت شد.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="info-row">
+<span class="label">کد سفارش</span>
+<strong id="resultCode"></strong>
+</div>
+
+<div class="info-row">
+<span class="label">اپراتور</span>
+<strong id="resultOperator"></strong>
+</div>
+
+<div class="info-row">
+<span class="label">بسته</span>
+<strong id="resultVolume"></strong>
+</div>
+
+<div class="info-row">
+<span class="label">قیمت پایه</span>
+<strong id="resultPrice"></strong>
+</div>
+
+<div class="info-row">
+<span class="label">مبلغ پرداختی</span>
+<strong id="resultPayment"></strong>
+</div>
+
+<div class="info-row">
+<span class="label">شماره موبایل</span>
+<strong id="resultPhone"></strong>
+</div>
+
+<div class="info-row">
+<span class="label">تاریخ و ساعت</span>
+<strong id="resultDate"></strong>
+</div>
+
+<div id="resultStatus" class="status">
+🟠 در انتظار پیگیری
+</div>
+
+
+<button class="primary" onclick="showTrack()">
+پیگیری سفارش
+</button>
+
+<button
+class="secondary"
+onclick="showHome()"
+style="width:100%;margin-top:10px"
+>
+بازگشت به صفحه اصلی
+</button>
+
+</div>
+
+</section>
+
+
+
+<!-- پیگیری -->
+<section id="trackPage" class="hidden">
+
+<div class="hero">
+
+<h1>🔎 پیگیری سفارش</h1>
+
+<p>
+کد سفارش را وارد کنید.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<input
+id="trackCode"
+placeholder="کد سفارش"
+>
+
+<button class="primary" onclick="trackOrder()">
+پیگیری سفارش
+</button>
+
+<div id="trackResult"></div>
+
+<button
+class="secondary"
+onclick="showHome()"
+style="margin-top:15px;width:100%"
+>
+← بازگشت
+</button>
+
+</div>
+
+</section>
+
+
+<footer>
+فروشگاه اینترنت • خرید سریع و آسان بسته اینترنت
+</footer>
+
+</div>
+
+
+
+<script>
+
+let currentOperator="";
+let currentVolume=0;
+let currentPrice=0;
+let currentPaymentAmount=0;
+
+const cardNumber="5022291522871217";
+
+
+const packages={
+
+irancell:[
+{volume:10,price:35000},
+{volume:20,price:55000}
+],
+
+mci:[
+{volume:10,price:35000},
+{volume:20,price:55000},
+{volume:30,price:75000}
+]
+
+};
+
+
+
+/* مخفی کردن همه صفحات */
+
+function hideAll(){
+
+document.getElementById("home").classList.add("hidden");
+
+document.getElementById("packagesPage").classList.add("hidden");
+
+document.getElementById("orderPage").classList.add("hidden");
+
+document.getElementById("resultPage").classList.add("hidden");
+
+document.getElementById("trackPage").classList.add("hidden");
+
+}
+
+
+
+/* خانه */
+
+function showHome(){
+
+hideAll();
+
+document.getElementById("home").classList.remove("hidden");
+
+}
+
+
+
+/* انتخاب اپراتور */
+
+function showOperator(operator){
+
+currentOperator=operator;
+
+hideAll();
+
+document
+.getElementById("packagesPage")
+.classList.remove("hidden");
+
+
+document.getElementById("operatorTitle").innerText=
+
+operator==="irancell"
+?"📶 بسته‌های ایرانسل"
+:"📶 بسته‌های همراه اول";
+
+
+const list=
+document.getElementById("packageList");
+
+list.innerHTML="";
+
+
+packages[operator].forEach(p=>{
+
+list.innerHTML+=`
+
+<div class="card package">
+
+<div class="volume">
+${p.volume} گیگابایت
+</div>
+
+<div class="price">
+${p.price.toLocaleString("fa-IR")} تومان
+</div>
+
+<button
+class="primary"
+onclick="openOrder(${p.volume},${p.price})"
+>
+انتخاب بسته
+</button>
+
+</div>
+
+`;
+
+});
+
+}
+
+
+
+/* قیمت بسته دلخواه */
+
+function calculateCustom(){
+
+const volume=
+Number(
+document.getElementById("customVolume").value
+);
+
+
+if(!volume){
+
+document.getElementById("customPrice").innerText="۰";
+
+return;
+
+}
+
+
+const price=
+Math.ceil(volume*3500);
+
+
+document.getElementById("customPrice").innerText=
+price.toLocaleString("fa-IR");
+
+}
+
+
+
+/*
+ساخت مبلغ پرداختی یکتا
+
+مثلاً:
+35000
++
+837
+=
+35837
+*/
+
+function generatePaymentAmount(price){
+
+const randomPart=
+Math.floor(Math.random()*999)+1;
+
+return price+randomPart;
+
+}
+
+
+
+/* سفارش حجم دلخواه */
+
+function customOrder(){
+
+const volume=
+Number(
+document.getElementById("customVolume").value
+);
+
+
+if(!volume || volume<=0){
+
+alert("لطفاً حجم اینترنت را وارد کنید.");
+
+return;
+
+}
+
+
+const price=
+Math.ceil(volume*3500);
+
+openOrder(volume,price);
+
+}
+
+
+
+/* باز کردن صفحه پرداخت */
+
+function openOrder(volume,price){
+
+currentVolume=volume;
+
+currentPrice=price;
+
+
+/*
+هر بار سفارش جدید باز می‌شود،
+یک مبلغ جدید ساخته می‌شود.
+*/
+
+currentPaymentAmount=
+generatePaymentAmount(price);
+
+
+hideAll();
+
+document
+.getElementById("orderPage")
+.classList.remove("hidden");
+
+
+document.getElementById("orderOperator").innerText=
+
+currentOperator==="irancell"
+?"ایرانسل"
+:"همراه اول";
+
+
+document.getElementById("orderVolume").innerText=
+volume+" گیگابایت";
+
+
+document.getElementById("orderPrice").innerText=
+price.toLocaleString("fa-IR")+" تومان";
+
+
+document.getElementById("paymentAmount").innerText=
+currentPaymentAmount.toLocaleString("fa-IR")+" تومان";
+
+
+document
+.getElementById("phoneForm")
+.classList.add("hidden");
+
+}
+
+
+
+/* نمایش فرم شماره موبایل */
+
+function showPhoneForm(){
+
+document
+.getElementById("phoneForm")
+.classList.remove("hidden");
+
+document
+.getElementById("phone")
+.focus();
+
+}
+
+
+
+/*
+کپی شماره کارت
+
+اول Clipboard API
+اگر مرورگر اجازه نداد،
+روش قدیمی fallback اجرا می‌شود.
+*/
+
+async function copyCard(){
+
+const message=
+document.getElementById("copyMessage");
+
+
+try{
+
+if(
+navigator.clipboard &&
+window.isSecureContext
+){
+
+await navigator.clipboard.writeText(cardNumber);
+
+}else{
+
+throw new Error("Clipboard API unavailable");
+
+}
+
+
+message.innerText=
+"✓ شماره کارت با موفقیت کپی شد";
+
+message.style.color="#65dc91";
+
+
+}catch(error){
+
+try{
+
+const textarea=
+document.createElement("textarea");
+
+textarea.value=cardNumber;
+
+textarea.style.position="fixed";
+textarea.style.left="-9999px";
+textarea.style.top="0";
+
+document.body.appendChild(textarea);
+
+textarea.focus();
+textarea.select();
+
+const successful=
+document.execCommand("copy");
+
+document.body.removeChild(textarea);
+
+
+if(successful){
+
+message.innerText=
+"✓ شماره کارت با موفقیت کپی شد";
+
+message.style.color="#65dc91";
+
+}else{
+
+throw new Error("Copy failed");
+
+}
+
+
+}catch(e){
+
+message.innerText=
+"کپی خودکار انجام نشد؛ شماره کارت را دستی کپی کنید.";
+
+message.style.color="#ff7070";
+
+}
+
+}
+
+
+setTimeout(()=>{
+
+message.innerText="";
+
+},3000);
+
+}
+
+
+
+/* ثبت سفارش */
+
+function submitOrder(){
+
+const phone=
+document.getElementById("phone")
+.value
+.trim();
+
+
+const error=
+document.getElementById("phoneError");
+
+error.innerHTML="";
+
+
+if(!/^09\d{9}$/.test(phone)){
+
+error.innerHTML=
+'<div class="error">شماره موبایل معتبر نیست.</div>';
+
+return;
+
+}
+
+
+/* گرفتن سفارش‌های قبلی */
+
+let orders=
+JSON.parse(
+localStorage.getItem("internet_orders")||"[]"
+);
+
+
+/* ساخت کد سفارش */
+
+const code=
+
+Math.random()
+.toString(36)
+.substring(2,8)
+.toUpperCase()
+
++
+
+Math.random()
+.toString(36)
+.substring(2,6)
+.toUpperCase();
+
+
+const now=new Date();
+
+
+/* ساخت سفارش */
+
+const order={
+
+code:code,
+
+operator:currentOperator,
+
+volume:currentVolume,
+
+price:currentPrice,
+
+paymentAmount:currentPaymentAmount,
+
+phone:phone,
+
+createdAt:now.getTime(),
+
+date:now.toLocaleString("fa-IR")
+
+};
+
+
+/* ذخیره */
+
+orders.push(order);
+
+localStorage.setItem(
+"internet_orders",
+JSON.stringify(orders)
+);
+
+
+/* نمایش نتیجه */
+
+showResult(order);
+
+}
+
+
+
+/* صفحه نتیجه */
+
+function showResult(order){
+
+hideAll();
+
+document
+.getElementById("resultPage")
+.classList.remove("hidden");
+
+
+document.getElementById("resultCode").innerText=
+order.code;
+
+
+document.getElementById("resultOperator").innerText=
+
+order.operator==="irancell"
+?"ایرانسل"
+:"همراه اول";
+
+
+document.getElementById("resultVolume").innerText=
+order.volume+" گیگابایت";
+
+
+document.getElementById("resultPrice").innerText=
+order.price.toLocaleString("fa-IR")+" تومان";
+
+
+document.getElementById("resultPayment").innerText=
+order.paymentAmount.toLocaleString("fa-IR")+" تومان";
+
+
+document.getElementById("resultPhone").innerText=
+order.phone;
+
+
+document.getElementById("resultDate").innerText=
+order.date;
+
+
+updateStatus(order);
+
+}
+
+
+
+/* وضعیت سفارش */
+
+function getStatus(order){
+
+const elapsed=
+Date.now()-order.createdAt;
+
+
+return elapsed>=30*60*1000
+?"تأیید شد"
+:"در انتظار پیگیری";
+
+}
+
+
+
+/* آپدیت وضعیت */
+
+function updateStatus(order){
+
+const status=
+getStatus(order);
+
+
+const box=
+document.getElementById("resultStatus");
+
+
+if(status==="تأیید شد"){
+
+box.className="status success";
+
+box.innerText="🟢 تأیید شد";
+
+}else{
+
+box.className="status";
+
+box.innerText="🟠 در انتظار پیگیری";
+
+}
+
+}
+
+
+
+/* صفحه پیگیری */
+
+function showTrack(){
+
+hideAll();
+
+document
+.getElementById("trackPage")
+.classList.remove("hidden");
+
+}
+
+
+
+/* پیگیری از صفحه اصلی */
+
+function trackFromHome(){
+
+const code=
+document.getElementById("homeTrackCode")
+.value
+.trim();
+
+
+if(!code){
+
+document
+.getElementById("homeTrackError")
+.innerHTML=
+'<div class="error">کد سفارش را وارد کنید.</div>';
+
+return;
+
+}
+
+
+showTrack();
+
+
+document.getElementById("trackCode").value=code;
+
+trackOrder();
+
+}
+
+
+
+/* پیگیری سفارش */
+
+function trackOrder(){
+
+const code=
+document.getElementById("trackCode")
+.value
+.trim()
+.toUpperCase();
+
+
+const result=
+document.getElementById("trackResult");
+
+
+if(!code){
+
+result.innerHTML=
+'<div class="error">کد سفارش را وارد کنید.</div>';
+
+return;
+
+}
+
+
+const orders=
+JSON.parse(
+localStorage.getItem("internet_orders")||"[]"
+);
+
+
+const order=
+orders.find(o=>o.code===code);
+
+
+if(!order){
+
+result.innerHTML=
+'<div class="error">سفارشی با این کد پیدا نشد.</div>';
+
+return;
+
+}
+
+
+const status=
+getStatus(order);
+
+
+result.innerHTML=`
+
+<div class="card" style="margin-top:20px">
+
+<div class="info-row">
+<span class="label">کد سفارش</span>
+<strong>${order.code}</strong>
+</div>
+
+<div class="info-row">
+<span class="label">اپراتور</span>
+<strong>
+${order.operator==="irancell"?"ایرانسل":"همراه اول"}
+</strong>
+</div>
+
+<div class="info-row">
+<span class="label">بسته</span>
+<strong>
+${order.volume} گیگابایت
+</strong>
+</div>
+
+<div class="info-row">
+<span class="label">قیمت پایه</span>
+<strong>
+${order.price.toLocaleString("fa-IR")} تومان
+</strong>
+</div>
+
+<div class="info-row">
+<span class="label">مبلغ پرداختی</span>
+<strong>
+${order.paymentAmount.toLocaleString("fa-IR")} تومان
+</strong>
+</div>
+
+<div class="info-row">
+<span class="label">شماره موبایل</span>
+<strong>
+${order.phone}
+</strong>
+</div>
+
+<div class="info-row">
+<span class="label">تاریخ</span>
+<strong>
+${order.date}
+</strong>
+</div>
+
+<div class="${status==="تأیید شد"?"status success":"status"}">
+
+${status==="تأیید شد"
+?"🟢 تأیید شد"
+:"🟠 در انتظار پیگیری"}
+
+</div>
+
+</div>
+
+`;
+
+}
+
+</script>
+
+</body>
+</html>
